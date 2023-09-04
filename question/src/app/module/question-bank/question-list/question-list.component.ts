@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionDetails } from 'src/app/model/QuestionDetails';
-import { PopUpEventService } from 'src/app/service/pop-up-event.service';
+import { LoadDataService } from 'src/app/service/load-data.service';
 import { QuestionService } from 'src/app/service/question.service';
 import { QuestionFormComponent } from 'src/app/shared/question-form/question-form.component';
 
@@ -26,7 +26,7 @@ export class QuestionListComponent {
 
   ngOnInit(): void {
     this.onload();
-    PopUpEventService.reloadData.subscribe(res => {
+    LoadDataService.reloadData.subscribe(res => {
       this.onload();
     })
   }

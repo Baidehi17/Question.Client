@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray, FormControl, AbstractCon
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionDetails } from 'src/app/model/QuestionDetails';
 import { subQuestions } from 'src/app/model/subQuestions';
-import { PopUpEventService } from 'src/app/service/pop-up-event.service';
+import { LoadDataService } from 'src/app/service/load-data.service';
 import { QuestionService } from 'src/app/service/question.service';
 
 @Component({
@@ -112,7 +112,7 @@ export class QuestionFormComponent {
     };
     this.questionService.updateQuestion(updatedQuestionDetails).subscribe(
       () => {
-        PopUpEventService.reloadData.emit();  },
+        LoadDataService.reloadData.emit();  },
       (error) => {
         console.log('error');
       }
@@ -137,7 +137,7 @@ export class QuestionFormComponent {
         (error) => { console.log(error); }
       );
     });
-    PopUpEventService.reloadData.emit();
+    LoadDataService.reloadData.emit();
   }
 
   async AddDetails() {
@@ -164,7 +164,7 @@ export class QuestionFormComponent {
     ADDSubQuestions.forEach((ADDSubQuestions, index) => {
       this.questionService.addSubquestion(ADDSubQuestions).subscribe(
         () => {
-          PopUpEventService.reloadData.emit();
+          LoadDataService.reloadData.emit();
           console.log();
         },
         (error) => {
@@ -172,7 +172,7 @@ export class QuestionFormComponent {
         }
       );
     });
-    PopUpEventService.reloadData.emit();
+    LoadDataService.reloadData.emit();
   }
 
   delete() {
@@ -181,7 +181,7 @@ export class QuestionFormComponent {
         () => {
           this.questionService.deleteQuest(this.questionId).subscribe(
             () => {
-              PopUpEventService.reloadData.emit();
+              LoadDataService.reloadData.emit();
               this.close();
             },
             (error) => {
