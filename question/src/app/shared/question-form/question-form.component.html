@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{questionId?'Edit':'Add'}} Question</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="questionType">Title:</label>
+                <input type="text" id="questionType" formControlName="questionType" class="form-control" />
+                <div *ngIf="f['questionType'].invalid && (f['questionType'].touched || submitted)" class="text-danger">
+                    <div *ngIf="f['questionType'].errors?.['required']">Title is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" formControlName="description" class="form-control" />
+                <div *ngIf="(submitted || f['description'].touched) && f['description'].errors?.['required']"
+                    class="text-danger">
+                    Description is required
+                </div>
+
+            </div>
+
+            <div formArrayName="subQuestions" *ngFor="let subQues of subQuestions.controls; let i = index">
+                <div class="form-group" [formGroupName]="i">
+
+                    <label for="subQuestionName">Sub-Question Name:</label>
+                    <input type="text" id="subQuestionName" formControlName="subQuestionName" class="form-control" />
+                    <div *ngIf="(submitted || getSubQuestionControl(i, 'subQuestionName').touched) && getSubQuestionControl(i, 'subQuestionName').errors?.['required']"
+                        class="text-danger">
+                        Sub-Question Name is required
+                    </div>
+
+                    <label for="numberOfQuestion">Number of Questions:</label>
+                    <input type="number" id="numberOfQuestion" formControlName="numberOfQuestion"
+                        class="form-control" />
+                    <div *ngIf="(submitted || getSubQuestionControl(i, 'subQuestionName').touched) && getSubQuestionControl(i, 'subQuestionName').errors?.['required']"
+                        class="text-danger">
+                        Sub-Question Name is required
+                    </div>
+
+                    <label for="timeLimit">Time Limit:</label>
+                    <input type="number" id="timeLimit" formControlName="timeLimit" class="form-control" />
+                    <div *ngIf="(submitted || getSubQuestionControl(i, 'timeLimit').touched) && getSubQuestionControl(i, 'timeLimit').errors?.['required']"
+                        class="text-danger">
+                        Time Limit is required
+                    </div>
+                    <p-button styleClass="p-button-raised p-button-text p-button-info" *ngIf="!questionId"
+                        (click)="removeSubQuestion(i)" icon="pi pi-trash"></p-button>
+                </div>
+            </div>
+            <h6 class="mt-2" >Add SubQuestion Detail <p-button styleClass="p-button-raised p-button-text p-button-info"
+                    *ngIf="!questionId" (click)="addSubQuestion()" icon="pi pi-plus"></p-button></h6>
+        </div>
+        <button type="submit" data-dismiss="modal" (click)="onSubmit(questionId)"
+            class="btn btn-outline-dark mt-2 me-2">{{questionId?'Edit':'Add'}}</button>
+        <button type="button" data-dismiss="modal" class="btn btn-outline-danger mt-2 me-2" (click)="delete()"
+            *ngIf="questionId">Delete</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+</div>

@@ -1,0 +1,31 @@
+<div class="skill-question ms-4">
+    <div class="top-bar mt-3">
+        <h4>Question Paper</h4>
+        <div class="mb-2">
+            <p-button label="Add Question Paper" styleClass="p-button-sm" class="buttons"
+                (onClick)="addQuestionPaper()"></p-button>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="question-cards col-md-3 m-1 mt-3" *ngFor="let skill of questionDetails">
+                <div class="question-details">
+                    <p class="h6 ms-2 mt-2">{{skill.questionType}}<button (click)="editQuestionDetail(skill)"><img
+                                src="assets/image/edit.svg"></button><button (click)="delete(skill)"><img src="assets/image/trash3.svg"></button></p>
+                    <p class="question-info  ms-2">{{skill.description}}</p>
+                    <div class="mt-4 ms-2 total-questions">
+                        <p>view / Add Questions</p>
+                    </div>
+                </div>
+                <div class="total-question mt-2 ms-2">
+                    <app-card [id]="skill.id"></app-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #popupTemplate>
+    <div class="modal-body">
+        <app-question-form [questionId]="id" ></app-question-form>
+    </div>
+</ng-template>

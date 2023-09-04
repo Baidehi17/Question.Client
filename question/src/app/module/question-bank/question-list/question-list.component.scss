@@ -1,0 +1,70 @@
+.skill-question{
+    .top-bar{
+        display: flex;
+        justify-content: space-between;
+
+        .buttons{
+            margin: 0rem 2rem 0rem 0rem ;
+        }
+        button{
+            display: none;
+        }
+       
+    }
+}
+@media screen and (max-width:425px) {
+    .skill-question{
+        .top-bar{
+            .buttons{
+                margin: 0rem 0.5rem 0rem 0rem ; 
+            }
+        }
+    }
+    ::ng-deep .p-button.p-button-sm{
+      font-size: 0.7rem;
+      padding: 0.4rem;
+    }
+}
+.question-cards {
+     hr {margin: 0px; }
+ 
+     width: 32%;
+     border-style: ridge;
+     border-width: 0.1px;
+     border-color: #8d8484;
+     border-radius: 4px;
+ 
+ 
+     .question-details {
+ 
+        button{
+            background-color: transparent;
+            border: none;
+        }
+         .question-info {
+             color: #8d8484;
+         }
+ 
+         .total-questions {
+             color: #388ace;
+         }
+     }
+     .question-type{
+         display: flex;
+         font-size: 12px;
+         justify-content: space-around;
+     }
+    //  .total-question{
+    //      //display: flex;
+    //      //justify-content: space-around;
+    //  }
+ }
+ @media screen and (max-width:425px) {
+     .row{
+         display: block;
+     }
+     .question-cards{
+         width: 92%;
+         margin: 5rem 0rem;
+     }
+ }
