@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { subQuestions } from 'src/app/model/subQuestions';
+import { SubQuestions } from 'src/app/model/sub-questions';
 import { QuestionService } from 'src/app/service/question.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class CardComponent {
   @Input() id!: number;
   @Input() questionId!: number;
 
-  subQuestion: subQuestions[] = [];
+  subQuestion: SubQuestions[] = [];
 
   constructor(private questionService: QuestionService) { }
 

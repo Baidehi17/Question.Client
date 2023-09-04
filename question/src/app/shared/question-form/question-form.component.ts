@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { QuestionDetails } from 'src/app/model/QuestionDetails';
-import { subQuestions } from 'src/app/model/subQuestions';
+import { QuestionDetails } from 'src/app/model/question-details';
+import { SubQuestions } from 'src/app/model/sub-questions';
 import { LoadDataService } from 'src/app/service/load-data.service';
 import { QuestionService } from 'src/app/service/question.service';
 
@@ -16,7 +16,7 @@ export class QuestionFormComponent {
 
   @ViewChild('popup') popup: any;
 
-  subQuestion: subQuestions[] = [];
+  subQuestion: SubQuestions[] = [];
   questionDetail!: QuestionDetails;
   form!: FormGroup;
   submitted = false;
@@ -118,14 +118,14 @@ export class QuestionFormComponent {
       }
     );
 
-    const updatedSubQuestions: subQuestions[] = this.subQuestions.controls.map((subQuestionControl: AbstractControl, index: number) => {
+    const updatedSubQuestions: SubQuestions[] = this.subQuestions.controls.map((subQuestionControl: AbstractControl, index: number) => {
       const subQuestionFormGroup = subQuestionControl as FormGroup;
       return {
         id: subQuestionFormGroup.controls['id'].value,
         subQuestionName: subQuestionFormGroup.controls['subQuestionName'].value,
         numberOfQuestion: subQuestionFormGroup.controls['numberOfQuestion'].value,
         timeLimit: subQuestionFormGroup.controls['timeLimit'].value,
-        questionDetails_id: this.questionId
+        questionDetailsId: this.questionId
       };
     });
 
@@ -157,7 +157,7 @@ export class QuestionFormComponent {
         subQuestionName: subQuestionFormGroup.controls['subQuestionName'].value,
         numberOfQuestion: subQuestionFormGroup.controls['numberOfQuestion'].value,
         timeLimit: subQuestionFormGroup.controls['timeLimit'].value,
-        questionDetails_id: response
+        questionDetailsId: response
       };
     });
 
