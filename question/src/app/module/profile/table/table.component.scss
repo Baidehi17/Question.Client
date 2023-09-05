@@ -1,0 +1,131 @@
+.profiles {
+    display: flex;
+    background: var(--BG, #FAFAFA);
+   // width: 1336px;
+    height: 928px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex-shrink: 0;
+
+    .profile-text {
+        color: var(--gray-900, #101828);
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+    }
+
+    .data-table {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        border-radius: 8px;
+        border: 1px solid var(--black-b-50, #E9E9EA);
+        background: var(--White, #FFF);
+
+        .content {
+            display: flex;
+            padding: 24px;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+
+            .search-input {
+                .form-control {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    flex: 1 0 0;
+                    background: var(--black-b-45, #F5F5F5);
+                }
+
+                .search .form-control {
+                    padding-left: 2.375rem;
+                }
+
+                .search .form-control-feedback {
+                    position: absolute;
+                    z-index: 2;
+                    display: block;
+                    width: 2.375rem;
+                    height: 2.375rem;
+                    line-height: 2.375rem;
+                    text-align: center;
+                    pointer-events: none;
+                    color: #aaa;
+                }
+            }
+        }
+
+        .card {
+            ::ng-deep .p-paginator {
+                display: none;
+            }
+
+            ::ng-deep .p-datatable .p-datatable-header{
+                background-color: #ffff;
+            }
+            ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+                background-color: #ffff;
+                color: var(--black-b-75, #A4A5A7);
+                font-feature-settings: 'clig' off, 'liga' off;
+                //font-family: Inter;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: 1px;
+            }
+
+            ::ng-deep .p-datatable .p-datatable-thead>tr>td {
+                color: var(--black-b-300-lagit, #212429);
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px;
+            }
+
+            .action-frame {
+                display: flex;
+                padding: 24px;
+                justify-content: space-between;
+                align-items: center;
+                align-self: stretch;
+
+                .action {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+
+                    ::ng-deep .p-button.p-button-secondary.p-button-outlined {
+                        display: flex;
+                        padding: 8px 14px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 8px;
+                        border-radius: 4px;
+                        border: 1px solid var(--black-b-60, #D0D5DD);
+                        background: var(--White, #FFF);
+                        color: var(--text-colors-text-medium, #455573);
+                        //font-family: Inter;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:425px) {
+    .profiles {
+        width: 220%;
+    }
+}
